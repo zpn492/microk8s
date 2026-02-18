@@ -11,6 +11,9 @@ A place to establish knowledge about microk8s and argocd
  > deploy simple service <br />
  
 ## install microk8s
+
+https://kubernetes.io/blog/2019/11/26/running-kubernetes-locally-on-linux-with-microk8s/
+
 ```
 sudo snap install microk8s --classic
 ```
@@ -52,6 +55,8 @@ sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{data
 ```
 
 ## install arogcd cli
+
+https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
 ### retrieve installation file
 ```
