@@ -5,10 +5,10 @@ A place to establish knowledge about microk8s and argocd
 
  Required: snap
  
- > install microk8s
- > deploy argocd 
- > install argocd cli
- > deploy simple service 
+ > install microk8s <br />
+ > deploy argocd <br />
+ > install argocd cli <br />
+ > deploy simple service <br />
  
 ## install microk8s
 sudo snap install microk8s --classic
