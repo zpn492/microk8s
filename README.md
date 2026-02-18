@@ -1,57 +1,62 @@
 # microk8s
 A place to establish knowledge about microk8s and argocd
 
-Your microk8s solution with argo cd
+# Your microk8s solution with argo cd
 
-# Required: snap
-
-# install microk8s
+ Required: snap
+ 
+ > install microk8s
+ > deploy argocd 
+ > install argocd cli
+ > deploy simple service 
+ 
+## install microk8s
 sudo snap install microk8s --classic
 
-# set an alias
+### set an alias
 sudo snap alias microk8s.kubectl kubectl
 
-# Enable dns and storage
+### Enable dns and storage
 
 sudo microk8s enable dns
 
 sudo microk8s enable storage
 
 
-# argo cd getting started
+## argo cd getting started
 https://argo-cd.readthedocs.io/en/stable/getting_started/
 
-# create a namespace for argocd
+### create a namespace for argocd
 sudo kubectl create namespace argocd
 
-# install argocd
+### install argocd
 sudo kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-# get services
+### get services
 sudo kubectl get svc -n argocd
 
-# get password
+### get password
 sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{data.password}" | base64 -d; echo
 
-# install arogcd cli
+## install arogcd cli
 
-## retrieve installation file
+### retrieve installation file
 curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
 
-## make it executeable and move it
+### make it executeable and move it
 chmod +x argocd
 sudo mv argocd /user/local/bin/
 
-# login to argocd-server
+### login to argocd-server
 argocd login <cluster-ip> --username admin --password <pass> --insecure
 
 ## create dummy app
 argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
 
-## sync dummy app
+### sync dummy app
 argocd app sync guestbook
 
-## delate dummy app
+### delate dummy app
 argocd app delete guestbook
 
 
