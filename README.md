@@ -25,10 +25,12 @@ sudo snap alias microk8s.kubectl kubectl
 
 ### Enable dns and storage
 ```
-sudo microk8s enable dns
+sudo microk8s enable dashboard dns storage
 ```
+
+### token for dashboard
 ```
-sudo microk8s enable storage
+sudo microk8s dashboard-proxy
 ```
 
 ## argo cd getting started
@@ -92,4 +94,30 @@ argocd app sync guestbook
 argocd app delete guestbook
 ```
 
+## ssh github
+https://dev.to/hbolajraf/git-connecting-to-github-and-pushing-changes-using-ssh-on-windows-2f5
 
+### generate ssh public/private keys
+```
+ssh-keygen -t rsa -b 4096 -C "<user>@gmail.com"
+```
+
+### place public key at your github account
+> Copy public key
+```
+cat <key>.pub | clip
+```
+> Go to repository <br />
+> Go to settings <br />
+> Go to Security > Deploy keys
+> Create a new deploy key
+
+### add private key to your ssh agent
+```
+ssh-add <key>
+```
+
+### verify ssh connection
+```
+ssh -T git@gmail.com
+```
