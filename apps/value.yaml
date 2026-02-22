@@ -1,0 +1,10 @@
+config:
+  spec:
+    destination:
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/zpn492/microk8s
+      targetRevision: master
+
+applications:
+  - name: guestbook
