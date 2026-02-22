@@ -10,6 +10,7 @@ A place to establish knowledge about microk8s and argocd
  **[install argocd cli](#install-arogcd-cli)** <br />
  **[deploy simple service](#deploy-simple-service)** <br />
  **[ssh access to github repository](#ssh-github)** <br />
+ **[deploy](#deploy-keycloak)** <br />
  
 ## install microk8s
 
@@ -134,4 +135,34 @@ ssh-add <key>
 ### verify ssh connection
 ```
 ssh -T git@github.com
+```
+
+## deploy keycloak 
+**[back](#microk8s)** <br />
+
+https://www.keycloak.org/getting-started/getting-started-kube
+
+https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/refs/heads/main/kubernetes/keycloak.yaml
+
+```
+argocd app create keycloak --repo https://github.com/zpn492/microk8s.git --path keycloak --dest-server https://kubernetes.default.svc --dest-namespace default
+```
+### sync keycloak app
+```
+argocd app sync keycloak
+```
+
+### lookup admin site
+```
+kubectl get svc -default
+```
+
+find cluster-ip and port-nr. from keycloak and copy paste it into your browser.
+
+### find .well-known
+<cluster-ip>:<port-nr>/realms/master/.well-known/openid-configuration
+
+### delate keycloak app
+```
+argocd app delete keycloak
 ```
