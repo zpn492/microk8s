@@ -6,10 +6,10 @@ A place to establish knowledge about microk8s and argocd
  Required: snap
  
  **[install microk8s](#install-microk8s)** <br />
- **[deploy argocd]()** <br />
- **[install argocd cli]()** <br />
- **[deploy simple service]()** <br />
- **[ssh access to github repository]()** <br />
+ **[deploy argocd](#deploy-argocd)** <br />
+ **[install argocd cli](#install-arogcd-cli)** <br />
+ **[deploy simple service](#deploy-simple-service)** <br />
+ **[ssh access to github repository](#ssh-github)** <br />
  
 ## install microk8s
 
@@ -34,7 +34,7 @@ sudo microk8s enable dashboard dns storage
 sudo microk8s dashboard-proxy
 ```
 
-## argo cd getting started
+## deploy argocd
 https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ### create a namespace for argocd
@@ -79,7 +79,7 @@ sudo mv argocd /user/local/bin/
 argocd login <cluster-ip> --username admin --password <pass> --insecure
 ```
 
-## create dummy app
+## deploy simple service 
 
 https://github.com/argoproj/argocd-example-apps/tree/master
 
