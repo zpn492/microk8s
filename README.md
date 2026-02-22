@@ -5,11 +5,11 @@ A place to establish knowledge about microk8s and argocd
 
  Required: snap
  
- ** install microk8s <br />
- ** deploy argocd <br />
- ** install argocd cli <br />
- ** deploy simple service <br />
- ** ssh access to github repository <br />
+ **[install microk8s](#install-microk8s)** <br />
+ **[deploy argocd]()** <br />
+ **[install argocd cli]()** <br />
+ **[deploy simple service]()** <br />
+ **[ssh access to github repository]()** <br />
  
 ## install microk8s
 
