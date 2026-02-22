@@ -16,22 +16,22 @@ A place to establish knowledge about microk8s and argocd
 https://kubernetes.io/blog/2019/11/26/running-kubernetes-locally-on-linux-with-microk8s/
 
 ```
-sudo snap install microk8s --classic
+snap install microk8s --classic
 ```
 
 ### set an alias
 ```
-sudo snap alias microk8s.kubectl kubectl
+snap alias microk8s.kubectl kubectl
 ```
 
 ### Enable dns and storage
 ```
-sudo microk8s enable dashboard dns storage
+microk8s enable dashboard dns storage
 ```
 
 ### token for dashboard
 ```
-sudo microk8s dashboard-proxy
+microk8s dashboard-proxy
 ```
 
 ## deploy argocd 
@@ -41,22 +41,29 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ### create a namespace for argocd
 ```
-sudo kubectl create namespace argocd
+kubectl create namespace argocd
 ```
 
 ### install argocd
 ```
-sudo kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+
+### to access argo cd ui, change argocd-server to loadbalancer
+
+```
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "loadbalancer"}}'
+```
+
 
 ### get services
 ```
-sudo kubectl get svc -n argocd
+kubectl get svc -n argocd
 ```
 
 ### get password
 ```
-sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{data.password}" | base64 -d; echo
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 
 ## install arogcd cli
@@ -74,7 +81,7 @@ curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download
 chmod +x argocd
 ```
 ```
-sudo mv argocd /user/local/bin/
+mv argocd /user/local/bin/
 ```
 
 ### login to argocd-server
