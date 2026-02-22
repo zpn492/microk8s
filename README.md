@@ -52,7 +52,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ### to access argo cd ui, change argocd-server to loadbalancer
 
 ```
-kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "loadbalancer"}}'
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer", "externalIPs":["192.168.1.27"]}}'
 ```
 
 

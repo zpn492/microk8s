@@ -7,4 +7,9 @@ config:
       targetRevision: main
 
 applications:
+  - name: archi
   - name: guestbook
+  - name: helm-guestbook
+    tool:
+        helm:
+            release-name: helm-guestbook
