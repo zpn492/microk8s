@@ -21,7 +21,7 @@ snap install microk8s --classic
 
 ### set an alias
 ```
-snap alias microk8s.kubectl kubectl
+
 ```
 
 ### Enable dns and storage
@@ -41,12 +41,12 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ### create a namespace for argocd
 ```
-kubectl create namespace argocd
+
 ```
 
 ### install argocd
 ```
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
 ```
 
 ### to access argo cd ui, change argocd-server to loadbalancer

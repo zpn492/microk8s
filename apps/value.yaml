@@ -7,7 +7,7 @@ config:
       targetRevision: main
 
 applications:
-  - name: archi
+  - name: keycloak
   - name: guestbook
   - name: helm-guestbook
     tool:
