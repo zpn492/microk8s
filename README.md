@@ -5,10 +5,7 @@ A place to establish knowledge about microk8s and argocd
 
  Required: snap
  
- > install microk8s <br />
- > deploy argocd <br />
- > install argocd cli <br />
- > deploy simple service <br />
+[[TOC]]
  
 ## install microk8s
 
@@ -119,5 +116,5 @@ ssh-add <key>
 
 ### verify ssh connection
 ```
-ssh -T git@gmail.com
+ssh -T git@github.com
 ```
