@@ -102,7 +102,7 @@ argocd app create guestbook --repo https://github.com/argoproj/argocd-example-ap
 ```
 argocd app sync guestbook
 ```
-### delate dummy app
+### delete dummy app
 ```
 argocd app delete guestbook
 ```
@@ -165,7 +165,7 @@ kubectl get svc -default
 find cluster-ip and port-nr. from keycloak and copy paste it into your browser.
 
 ### find .well-known
-<cluster-ip>:<port-nr>/realms/master/.well-known/openid-configuration
+cluster-ip:port-nr/realms/master/.well-known/openid-configuration
 
 ### Token retrieval after you created a client
 
@@ -175,7 +175,7 @@ https://datatracker.ietf.org/doc/html/rfc6749#section-4.4
 curl -H "application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=<client-id>&client_secret=HMqj.." http://<cluster-ip>:8080/realms/<realm>/protocol/openid-connect/token
 ```
 
-### delate keycloak app
+### delete keycloak app
 ```
 argocd app delete keycloak
 ```
