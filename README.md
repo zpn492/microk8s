@@ -35,7 +35,8 @@ sudo microk8s dashboard-proxy
 ```
 
 ## deploy argocd 
-**[back](#microk8s)**
+**[back](#microk8s)** <br />
+
 https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ### create a namespace for argocd
@@ -59,7 +60,7 @@ sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{data
 ```
 
 ## install arogcd cli
-**[back](#microk8s)**
+**[back](#microk8s)** <br />
 
 https://argo-cd.readthedocs.io/en/stable/cli_installation/
 
@@ -82,7 +83,7 @@ argocd login <cluster-ip> --username admin --password <pass> --insecure
 ```
 
 ## deploy simple service 
-**[back](#microk8s)**
+**[back](#microk8s)** <br />
 
 https://github.com/argoproj/argocd-example-apps/tree/master
 
@@ -99,7 +100,7 @@ argocd app delete guestbook
 ```
 
 ## ssh github
-**[back](#microk8s)**
+**[back](#microk8s)** <br />
 
 https://dev.to/hbolajraf/git-connecting-to-github-and-pushing-changes-using-ssh-on-windows-2f5
 
