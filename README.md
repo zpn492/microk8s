@@ -34,7 +34,7 @@ sudo microk8s enable dashboard dns storage
 sudo microk8s dashboard-proxy
 ```
 
-## deploy argocd
+## deploy argocd **[back](#microk8s)**
 https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ### create a namespace for argocd
