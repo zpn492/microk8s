@@ -10,7 +10,7 @@ A place to establish knowledge about microk8s and argocd
  **[install argocd cli](#install-arogcd-cli)** <br />
  **[deploy simple service](#deploy-simple-service)** <br />
  **[ssh access to github repository](#ssh-github)** <br />
- **[deploy](#deploy-keycloak)** <br />
+ **[deploy keycloak](#deploy-keycloak)** <br />
  
 ## install microk8s
 
@@ -22,7 +22,7 @@ snap install microk8s --classic
 
 ### set an alias
 ```
-
+snap alias microk8s.kubectl kubectl
 ```
 
 ### Enable dns and storage
@@ -42,12 +42,12 @@ https://argo-cd.readthedocs.io/en/stable/getting_started/
 
 ### create a namespace for argocd
 ```
-
+kubectl create namespace argocd
 ```
 
 ### install argocd
 ```
-
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
 ### to access argo cd ui, change argocd-server to loadbalancer
@@ -140,12 +140,17 @@ ssh -T git@github.com
 ## deploy keycloak 
 **[back](#microk8s)** <br />
 
+### create a new namespace for infrastructure
+```
+kubectl create namespace infrastructure
+```
+
 https://www.keycloak.org/getting-started/getting-started-kube
 
 https://raw.githubusercontent.com/keycloak/keycloak-quickstarts/refs/heads/main/kubernetes/keycloak.yaml
 
 ```
-argocd app create keycloak --repo https://github.com/zpn492/microk8s.git --path keycloak --dest-server https://kubernetes.default.svc --dest-namespace default
+argocd app create keycloak --repo https://github.com/zpn492/microk8s.git --path keycloak --dest-server https://kubernetes.default.svc --dest-namespace infrastructure
 ```
 ### sync keycloak app
 ```
@@ -161,6 +166,14 @@ find cluster-ip and port-nr. from keycloak and copy paste it into your browser.
 
 ### find .well-known
 <cluster-ip>:<port-nr>/realms/master/.well-known/openid-configuration
+
+### Token retrieval after you created a client
+
+https://datatracker.ietf.org/doc/html/rfc6749#section-4.4
+
+```
+curl -H "application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=<client-id>&client_secret=HMqj.." http://<cluster-ip>:8080/realms/<realm>/protocol/openid-connect/token
+```
 
 ### delate keycloak app
 ```
