@@ -175,7 +175,19 @@ https://datatracker.ietf.org/doc/html/rfc6749#section-4.4
 curl -H "application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=<client-id>&client_secret=HMqj.." http://<cluster-ip>:8080/realms/<realm>/protocol/openid-connect/token
 ```
 
+### install pgadmin for postgres administration
+
+```
+argocd app create pgadmin --repo https://github.com/zpn492/microk8s.git --path pgadmin --dest-server https://kubernetes.default.svc --dest-namespace infrastructure
+```
+
 ### delete keycloak app
 ```
 argocd app delete keycloak
 ```
+
+## postgre sql
+
+https://github.com/CrunchyData/postgres-operator/tree/v6.0.0
+
+https://access.crunchydata.com/documentation/postgres-operator/latest/installation/kustomize
