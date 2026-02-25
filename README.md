@@ -186,6 +186,36 @@ argocd app create pgadmin --repo https://github.com/zpn492/microk8s.git --path p
 argocd app delete keycloak
 ```
 
+## cert-manager and clusterIssuer
+
+https://cert-manager.io/v1.1-docs/installation/kubernetes/
+
+In this bullet we will add a cert-manager setup for our microk8s.
+
+It should have been easy with a small addon, but it did not work for me. https://canonical.com/microk8s/docs/addon-cert-manager
+
+```
+microk8s enable cert-manager
+```
+
+### cert-manager installation with helm
+
+> Required: Helm v3 installed <br />
+
+we will reuse our namespace : infrastructure
+
+```
+microk8s helm repo add jetstack https://charts.jetstack.io
+```
+
+```
+microk8s helm repo update
+```
+
+```
+microk8s helm install cert-manager jetstack/cert-manager --namespace infrastructure --version v1.1.1 --set installCRDs=true
+```
+
 ## postgre sql
 
 https://github.com/CrunchyData/postgres-operator/tree/v6.0.0
