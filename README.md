@@ -181,6 +181,11 @@ curl -H "application/x-www-form-urlencoded" -d "grant_type=client_credentials&cl
 argocd app create pgadmin --repo https://github.com/zpn492/microk8s.git --path pgadmin --dest-server https://kubernetes.default.svc --dest-namespace infrastructure
 ```
 
+Login with
+
+> user: admin@example.com <br />
+> pass: admin 
+
 ### delete keycloak app
 ```
 argocd app delete keycloak
@@ -215,6 +220,18 @@ microk8s helm repo update
 ```
 microk8s helm install cert-manager jetstack/cert-manager --namespace infrastructure --version v1.1.1 --set installCRDs=true
 ```
+
+### uninstall
+
+```
+microk8s helm --namespace infrastructure delete cert-manager
+```
+
+### acme 
+
+certificates through automated API based on the ACME protocol
+https://letsencrypt.org/getting-started/
+
 
 ## postgre sql
 
