@@ -10,6 +10,10 @@ applications:
   - name: pgadmin
   - name: keycloak
   - name: guestbook
+  - name: helm-kestra
+    tool:
+        helm:
+            release-name: helm-kestra
   - name: helm-guestbook
     tool:
         helm:
