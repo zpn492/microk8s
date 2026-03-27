@@ -11,6 +11,7 @@ A place to establish knowledge about microk8s and argocd
  **[deploy simple service](#deploy-simple-service)** <br />
  **[ssh access to github repository](#ssh-github)** <br />
  **[deploy keycloak](#deploy-keycloak)** <br />
+ **[deploy harbor](#deploy-harbor)** <br />
  
 ## install microk8s
 
@@ -181,15 +182,46 @@ curl -H "application/x-www-form-urlencoded" -d "grant_type=client_credentials&cl
 argocd app create pgadmin --repo https://github.com/zpn492/microk8s.git --path pgadmin --dest-server https://kubernetes.default.svc --dest-namespace infrastructure
 ```
 
-Login with
+Find IP for PG-admin and keycloak postgres:
+
+```
+kubectl get svc -n infrastructure
+```
+
+PGadmin Login with
 
 > user: admin@example.com <br />
-> pass: admin 
+> pass: admin <br />
+
+Add new server 
+
+> name: keycloak <br />
+> user: keycloak <br />
+> pass: keycloak <br />
 
 ### delete keycloak app
 ```
 argocd app delete keycloak
 ```
+
+## deploy-harbor
+
+https://artifacthub.io/packages/helm/harbor/harbor/1.15.0
+
+we will reuse our namespace : infrastructure
+
+```
+microk8s helm repo add harbor https://helm.goharbor.io
+```
+
+```
+microk8s helm repo update
+```
+
+```
+microk8s helm install harbor harbor/harbor --namespace infrastructure 
+```
+
 
 ## cert-manager and clusterIssuer
 
@@ -202,6 +234,8 @@ It should have been easy with a small addon, but it did not work for me. https:/
 ```
 microk8s enable cert-manager
 ```
+
+https://nihatalim.medium.com/build-your-own-kubernetes-cluster-984a9dc61705
 
 ### cert-manager installation with helm
 
