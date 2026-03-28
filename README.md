@@ -12,6 +12,8 @@ A place to establish knowledge about microk8s and argocd
  **[ssh access to github repository](#ssh-github)** <br />
  **[deploy keycloak](#deploy-keycloak)** <br />
  **[deploy harbor](#deploy-harbor)** <br />
+ **[deploy kestra](#deploy-kestra)** <br /> 
+  helm install my-kestra-starter kestra/kestra-starter --version 1.1.13
  
 ## install microk8s
 
@@ -280,3 +282,15 @@ https://letsencrypt.org/getting-started/
 https://github.com/CrunchyData/postgres-operator/tree/v6.0.0
 
 https://access.crunchydata.com/documentation/postgres-operator/latest/installation/kustomize
+
+## deploy-kestra
+
+https://kestra.io/docs/installation/kubernetes
+
+```
+microk8s helm install kestra kestra/kestra-starter --version 1.1.13
+```
+
+```
+microk8s helm --namespace default delete kestra
+```
