@@ -13,7 +13,6 @@ A place to establish knowledge about microk8s and argocd
  **[deploy keycloak](#deploy-keycloak)** <br />
  **[deploy harbor](#deploy-harbor)** <br />
  **[deploy kestra](#deploy-kestra)** <br /> 
-  helm install my-kestra-starter kestra/kestra-starter --version 1.1.13
  
 ## install microk8s
 
@@ -286,6 +285,10 @@ https://access.crunchydata.com/documentation/postgres-operator/latest/installati
 ## deploy-kestra
 
 https://kestra.io/docs/installation/kubernetes
+
+```
+microk8s helm repo add kestra https://helm.kestra.io/
+```
 
 ```
 microk8s helm install kestra kestra/kestra-starter --version 1.1.13
