@@ -33,7 +33,12 @@ microk8s enable dashboard dns storage
 
 ### token for dashboard
 ```
-microk8s dashboard-proxy
+kubectl describe secret -n kube-system microk8s-dashboard-token
+```
+
+### dashboard
+```
+https://localhost:8443
 ```
 
 ## deploy argocd 
@@ -48,8 +53,11 @@ kubectl create namespace argocd
 
 ### install argocd
 ```
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+
+Update when upgrading from v3.2 -> v3.3 ( The CustomResourceDefinition "applicationsets.argoproj.io" is invalid: metadata.annotations: Too long: may not be more than 262144 bytes )
+https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/3.2-3.3/
 
 ### to access argo cd ui, change argocd-server to loadbalancer
 
